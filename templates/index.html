@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explainable Deep Learning Framework | EEG Brain Aging</title>
+    <meta name="description" content="Explainable Deep Learning Framework for EEG-Based Prediction and Visualization of Accelerated Brain Aging using the SRM Resting-state dataset (ds003775).">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <!-- ═══════════════════ HERO SECTION ═══════════════════ -->
+    <header class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">DS003775 • SRM Resting-state EEG Dataset</div>
+            <h1>Neuro<span class="gradient-text">Age</span> AI</h1>
+            <p class="hero-subtitle">
+                Explainable Deep Learning Framework for EEG-Based Prediction <br>
+                and Visualization of Accelerated Brain Aging
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-value">111</span>
+                    <span class="stat-label">Subjects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">25</span>
+                    <span class="stat-label">EEG Features</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">10</span>
+                    <span class="stat-label">ML Models</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">SHAP</span>
+                    <span class="stat-label">Explainability</span>
+                </div>
+            </div>
+            <a href="#knowledge-hub" class="cta-btn secondary">
+                <span>Explore Knowledge Hub</span>
+            </a>
+            <a href="#input-section" class="cta-btn">
+                <span>Start Prediction</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- ═══════════════════ KNOWLEDGE HUB ═══════════════════ -->
+    <section class="section" id="knowledge-hub">
+        <div class="container">
+            <div class="section-header">
+                <div class="hero-badge">Neuro-Science Academy</div>
+                <h2>🧠 Neuro-Knowledge Hub</h2>
+                <p>Master the fundamentals of EEG analysis and Brain Age Prediction</p>
+            </div>
+
+            <div class="knowledge-grid">
+                <!-- Card 1: What is EEG -->
+                <div class="knowledge-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Electronic Brainprint</h3>
+                    <p>Electroencephalography (EEG) records the brain's spontaneous electrical activity over time. It measures voltage fluctuations resulting from ionic current within the neurons of the brain.</p>
+                </div>
+
+                <!-- Card 2: Frequency Bands -->
+                <div class="knowledge-card">
+                    <div class="card-icon">🌊</div>
+                    <h3>Neural Oscillations</h3>
+                    <div class="band-list">
+                        <div class="band-item"><strong>Delta (<4 Hz):</strong> Dominant during deep sleep; associated with healing and recovery.</div>
+                        <div class="band-item"><strong>Theta (4-8 Hz):</strong> Linked to memory, intuition, and deep relaxation.</div>
+                        <div class="band-item"><strong>Alpha (8-13 Hz):</strong> The 'resting' brain; indicates calm focus and mental coordination.</div>
+                        <div class="band-item"><strong>Beta (13-30 Hz):</strong> Active thought, problem-solving, and logical focus.</div>
+                        <div class="band-item"><strong>Gamma (>30 Hz):</strong> Peak mental performance, high-level information processing.</div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Brain Aging -->
+                <div class="knowledge-card">
+                    <div class="card-icon">⏳</div>
+                    <h3>Accelerated Aging</h3>
+                    <p>As we age, neural networks naturally change. <strong>Accelerated Brain Aging</strong> occurs when functional markers (like Alpha power) decline faster than the chronological average, often signaling metabolic stress or cognitive risk.</p>
+                </div>
+
+                <!-- Card 4: The AI Framework -->
+                <div class="knowledge-card">
+                    <div class="card-icon">🤖</div>
+                    <h3>Explainable Deep Learning</h3>
+                    <p>Our framework uses an <strong>Ensemble of 10 Models</strong>, including Deep Neural Networks (MLP), to analyze 25 regional power features. <strong>SHAP values</strong> decompose these complex decisions into human-readable visual contributions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ INPUT SECTION ═══════════════════ -->
+    <section class="section" id="input-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>📊 Subject Input</h2>
+                <p>Enter pre-extracted EEG spectral power features or load a sample subject from the dataset</p>
+            </div>
+
+            <!-- Sample Subjects -->
+            <div class="sample-bar" id="sample-bar">
+                <span class="sample-label">Quick Load:</span>
+                <div class="sample-buttons" id="sample-buttons">
+                    <button class="sample-btn loading" disabled>Loading samples...</button>
+                </div>
+            </div>
+
+            <!-- Model Selector -->
+            <div class="section-header" style="margin-top:1rem;margin-bottom:1rem;">
+                <h3>🤖 Select Prediction Model</h3>
+            </div>
+            <div class="model-selector" id="model-selector">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Input Form -->
+            <form id="prediction-form" class="feature-form" novalidate>
+                <!-- Chronological Age -->
+                <div class="form-group age-group">
+                    <label for="chronological_age">
+                        <span class="label-icon">🎂</span>
+                        Chronological Age (years)
+                    </label>
+                    <input type="number" id="chronological_age" name="chronological_age" 
+                           min="18" max="100" step="0.1" placeholder="e.g. 55"
+                           class="input-field age-input">
+                    <span class="input-hint">Optional — enables brain age gap calculation</span>
+                </div>
+
+                <div class="form-divider">
+                    <span>EEG Spectral Features</span>
+                </div>
+
+                <!-- Feature Inputs Grid -->
+                <div class="features-grid" id="features-grid">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <!-- Submit -->
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="clear-btn">Clear All</button>
+                    <button type="submit" class="btn-primary" id="predict-btn">
+                        <span class="btn-text">🧠 Predict Brain Age</span>
+                        <span class="btn-loading" style="display:none;">
+                            <span class="spinner"></span> Analyzing...
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ RESULTS SECTION ═══════════════════ -->
+    <section class="section results-section" id="results-section" style="display:none;">
+        <div class="container">
+            
+            <!-- Brain Age Gauge -->
+            <div class="results-hero">
+                <div class="gauge-card glass-card">
+                    <h3>Predicted Brain Age</h3>
+                    <div class="gauge-container" id="gauge-container">
+                        <canvas id="gauge-canvas" width="280" height="200"></canvas>
+                        <div class="gauge-value" id="gauge-value">--</div>
+                        <div class="gauge-label">years</div>
+                    </div>
+                </div>
+
+                <div class="gap-card glass-card" id="gap-card">
+                    <h3>Brain Age Gap</h3>
+                    <div class="gap-value" id="gap-value">--</div>
+                    <div class="gap-description" id="gap-description">
+                        Enter chronological age to see the gap
+                    </div>
+                </div>
+
+                <div class="model-card glass-card">
+                    <h3>Active Model</h3>
+                    <div class="model-info">
+                        <div class="info-row">
+                            <span>Algorithm</span>
+                            <span class="mono" id="active-model-name">--</span>
+                        </div>
+                        <div class="info-row">
+                            <span>R² Score</span>
+                            <span class="mono" id="r2-score">--</span>
+                        </div>
+                        <div class="info-row">
+                            <span>CV R²</span>
+                            <span class="mono" id="cv-r2-score">--</span>
+                        </div>
+                        <div class="info-row">
+                            <span>MAE</span>
+                            <span class="mono" id="mae-score">--</span>
+                        </div>
+                        <div class="info-row">
+                            <span>Explainability</span>
+                            <span class="mono">SHAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Comparison Table -->
+            <div class="section-header" style="margin-bottom:1rem;">
+                <h3>📈 Model Comparison</h3>
+            </div>
+            <div class="comparison-card glass-card" id="comparison-card" style="margin-bottom:2rem;overflow-x:auto;">
+                <table class="comparison-table" id="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Prediction</th>
+                            <th>R²</th>
+                            <th>CV R²</th>
+                            <th>MAE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="comparison-tbody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Overall Assessment -->
+            <div class="assessment-card glass-card" id="assessment-card">
+                <div class="assessment-icon" id="assessment-icon">🧠</div>
+                <div class="assessment-content">
+                    <h3 id="assessment-title">--</h3>
+                    <p id="assessment-summary">--</p>
+                </div>
+            </div>
+
+            <!-- Feature Contributions (Combined SHAP & LIME) -->
+            <div class="section-header">
+                <h2>🔍 Feature Contributions (SHAP vs. LIME)</h2>
+                <p>Directional comparison: How each feature pushed the predicted age higher (aging) or lower (youthful)</p>
+            </div>
+
+            <div class="shap-card glass-card">
+                <canvas id="shap-chart" width="800" height="500"></canvas>
+            </div>
+
+
+
+            <!-- Health Recommendations -->
+            <div class="section-header">
+                <h2>💊 Personalized Health Recommendations</h2>
+                <p>Evidence-based suggestions based on your brain age profile</p>
+            </div>
+
+            <!-- Feature-specific recommendations -->
+            <div class="recommendations-grid" id="recommendations-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- General Tips -->
+            <div class="section-header" style="margin-top: 2rem;">
+                <h3>🌟 General Brain Health Guidelines</h3>
+            </div>
+            <div class="general-tips" id="general-tips">
+                <!-- Populated by JavaScript -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════ FOOTER ═══════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                Built on the <strong>DS003775 SRM Resting-state EEG</strong> dataset
+                · <a href="https://openneuro.org/datasets/ds003775" target="_blank" rel="noopener">OpenNeuro</a>
+                · <a href="https://doi.org/10.1016/j.dib.2022.108647" target="_blank" rel="noopener">Paper</a>
+            </p>
+            <p class="disclaimer">
+                ⚠️ This tool is for research and educational purposes only. It is not a medical diagnostic device.
+                Always consult healthcare professionals for medical decisions.
+            </p>
+        </div>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
