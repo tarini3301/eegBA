@@ -13,8 +13,8 @@ Follow these steps in your terminal to run the application:
 ### 1. (Optional) Create a Virtual Environment
 It is recommended to run this in a clean environment:
 ```powershell
-python -m venv venv
-.\venv\Scripts\activate
+python -m venv eegenv
+.\eegenv\Scripts\activate
 ```
 
 ### 2. Install Required Packages
